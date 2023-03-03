@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 
 // for signing in
 export const comparePasswords = (password, hash) => {

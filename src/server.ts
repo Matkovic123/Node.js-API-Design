@@ -3,6 +3,7 @@ import router from "./router";
 import morgan from "morgan";
 import cors from "cors";
 import { protect } from "./modules/auth";
+import { createNewUser, signin } from "./handlers/user";
 
 const app = express();
 // Middleware; Must come first
@@ -18,5 +19,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", protect, router); // protect before router so all routes in router are now protected by this
-
+app.post("/user", createNewUser);
+app.post("/signin", signin);
 export default app;
