@@ -1,10 +1,21 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
+// for signing in
+export const comparePasswords = (password, hash) => {
+  return bcrypt.compare(password, hash);
+};
+
+export const hashPassword = (password) => {
+  const salt = 5;
+  return bcrypt.hash(password, salt);
+};
 
 export const createJWT = (user) => {
   const token = jwt.sign(
     { id: user.id, username: user.username },
     process.env.JWT_SECRET
-  ); // JWT_SECRET is basically salt
+  ); // JWT_SECRET is basically salt in hashing, but this is not 100% equal to hashing
   return token;
 };
 
