@@ -4,8 +4,8 @@ const router = Router();
 /**
  * Product
  */
-router.get("/product", (req,res) => {
-    res.json({message:' hello'})
+router.get("/product", (req, res) => {
+  res.json({ message: req.secret });
 });
 router.get("/product/:id", () => {});
 router.put("/product/:id", () => {});
@@ -28,6 +28,5 @@ router.get("/updatepoint/:id", () => {});
 router.put("/updatepoint/:id", () => {});
 router.post("/updatepoint", () => {});
 router.delete("/updatepoint", () => {});
-
 
 export default router;
