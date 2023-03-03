@@ -2,6 +2,7 @@ import express from "express";
 import router from "./router";
 import morgan from "morgan";
 import cors from "cors";
+import { protect } from "./modules/auth";
 
 const app = express();
 // Middleware; Must come first
@@ -16,6 +17,6 @@ app.get("/", (req, res) => {
   res.json({ messge: "hello" });
 });
 
-app.use("/api", router);
+app.use("/api", protect, router); // protect before router so all routes in router are now protected by this
 
 export default app;
